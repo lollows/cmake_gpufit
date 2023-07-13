@@ -26,7 +26,7 @@ set_target_properties(gpufit PROPERTIES
 target_include_directories(${PROJECT_NAME} PRIVATE	${CMAKE_CURRENT_SOURCE_DIR}/include) #
 
 # 将 GPUFit 库文件链接到主项目
-target_link_libraries(${PROJECT_NAME} gpufit)
+target_link_libraries(${PROJECT_NAME} PRIVATE gpufit)
 
 # 复制相应版本的 DLL 文件到输出目录
 message(STATUS "CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")

@@ -3,9 +3,7 @@
 
 #pragma once
 
-#include "gpufit.h"
-
 #include <iostream>
 #include <vector>
-#include <random>
-#include <math.h>
+
+
