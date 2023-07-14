@@ -141,13 +141,21 @@ int main()
 		yy.index_put_({i, Ellipsis}, tensor_image);
 		//std::cout << yy.index({i, Slice(0, 2, 1), Slice(0, 10, 1) })<< std::endl;
 	}	
+
+	std::chrono::high_resolution_clock::time_point time_0 = std::chrono::high_resolution_clock::now();
+
 	torch::Tensor xx = torch::arange(0, zN, /*step=*/1, options).view({ 1,-1 }) * 0.1f; // (1,zN)
 	torch::Tensor heightMap, C;
 	std::tie(heightMap, C) = run_gpufit(xx, yy/*.index({ Ellipsis, Slice(0,2), Slice(0,1)})*/, 21, 8);
+    
+	// print execution time
+	std::chrono::high_resolution_clock::time_point time_1 = std::chrono::high_resolution_clock::now();	
+	std::cout << "execution time "
+		<< std::chrono::duration_cast<std::chrono::milliseconds>(time_1 - time_0).count() << " ms" << std::endl;
 	
-	C.print();
+	/*C.print();
 	heightMap.print();
-	std::cout << heightMap.index({Slice(20, 20+2), Slice(20, 20+10) })<< std::endl;
+	std::cout << heightMap.index({Slice(20, 20+2), Slice(20, 20+10) })<< std::endl;*/
 
 	//plot
 	{

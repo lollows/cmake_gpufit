@@ -104,13 +104,12 @@ std::tuple<torch::Tensor, torch::Tensor> run_gpufit(torch::Tensor& xx, torch::Te
 	/*std::cout << states.cpu() << std::endl;
 	std::cout << fit_parameters.index({Ellipsis, 1}).cpu() << std::endl;*/
 
-	torch::Tensor tmp = fit_parameters.cpu();
+	/*torch::Tensor tmp = fit_parameters.cpu();
 	std::vector<float> aa(tmp.data_ptr<float>(), tmp.data_ptr<float>() + tmp.numel());
 	tmp = chi_squares.cpu();
 	std::vector<float> bb(tmp.data_ptr<float>(), tmp.data_ptr<float>() + tmp.numel());
 	tmp = states.cpu();
-	std::vector<int> cc(tmp.data_ptr<int>(), tmp.data_ptr<int>() + tmp.numel());
-
+	std::vector<int> cc(tmp.data_ptr<int>(), tmp.data_ptr<int>() + tmp.numel());*/
 
 	// remove outliers
 	torch::Tensor L = states != 0; // condition 1
